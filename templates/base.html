@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Pexon Certification App</title>
+    <!-- Free CSS Framework https://semantic-ui.com/ -->
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css'>
+    <script src='https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js'></script>
+</head>
+
+<body>
+
+    <br>
+
+    <!-- Logo -->
+    <div>
+        <img class='ui centered medium image' src='https://pexon-consulting.de/wp-content/uploads/2022/03/PexonConsulting-59-min.png' alt='Pexon logo'>
+    </div>
+
+    <!-- Main app -->
+    <div style='margin-top: 50px;' class='ui container'>
+        <h1 class='ui center aligned header'>Pexon Certification App</h1>
+
+        <h2 class='ui center aligned header'>Hello Pexonian, please enter your certifications!</h2>
+
+        <form class='ui form' action='/add' method='post'>
+            <div class='field'>
+                <label class='ui large label'>Certification Title</label>
+                <input type='text' name='title' placeholder='Enter certification...'><br>
+            </div>
+            <button class='ui blue button' type='submit'>Add</button>
+        </form>
+
+        <hr>
+        <!-- Jinja2 as template engine -->
+        {% for certification in certification_list %}
+        <div class='ui segment'>
+            <p class='ui big header'>{{certification.id }} | {{ certification.title }}</p>
+
+            <a class='ui red button' href='/delete/{{ certification.id }}'>Delete</a>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
